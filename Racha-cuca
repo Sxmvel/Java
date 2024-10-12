@@ -1,52 +1,90 @@
-Trabalho pratico.
-
 package rachacuca;
 
-
+import java.util.Random;
 import java.util.Scanner;
 
 public class RachaCuca {
 
     public static void main(String[] args) {
         Scanner t = new Scanner(System.in);
-        
+
         //Menu de inicializacao
-        System.out.println("Ola jogador! Seja bem vindo(a) ao Racha-Cuca!\nMenu:\nSair(0)\nIniciar(1)\nTutorial(2)");
-        
+        System.out.println("Ola jogador! Seja bem vindo(a) ao Racha-Cuca!\nMenu:\nSair(0).\nIniciar(1).\nTutorial(2).");
+
         //Criando o tabuleiro do tipo String 
         String[][] tabuleiro = {
             {"1", "2", "3"},
             {"4", "5", "6"},
-            {"7", "8", ""}
+            {"7", "8", " "}
         };
-        //Responsavel para apresentar o tabuleiro inicial.
+
+        System.out.println();
+
+        // Inicio do jogo. Escolhendo a dificuldade. Sendo n
+        System.out.println("Selecione o nivel de dificuldade: \nFacil(1)\nMedio(2)\nDificl(3)");
+        // Criando uma variavel responsavel pela movimentacao do loco vazio, para embaralhar.
+
+        int n = t.nextInt();
+        if (n == 1) {
+            n = 20;
+        }
+        if (n == 2) {
+            n = 40;
+        }
+        if (n == 3) {
+            n = 80;
+        }
+
+        // Criando uma regra de movimento para embaralhar o tabuleiro.
+        Random random = new Random();
+        int[][] movimentos = {
+            {0, -1}, // Para Cima
+            {0, 1}, //Para Baixo
+            {1, 0}, //Para Direita
+            {-1, 0} // Para esquerda
+        };
+
+        //Localizando o indice vazio da string [2][2].
+        //Inicilizando as variaveis
+        int linhaVazia = -1, colunaVazia = -1;
+        for (int i = 0; i < tabuleiro.length; i++) {
+            for (int j = 0; j < tabuleiro.length; j++) {
+                if (tabuleiro[i][j].equals(" ")) {
+                    linhaVazia = i;
+                    colunaVazia = j;
+                }
+            }
+        }
+
+        // inicializando a nova posicao da string
+        int novaLinhaVazia = linhaVazia, novaColunaVazia = colunaVazia, ultimaLinhaVazia = -1, ultimaColunaVazia = -1;
+        boolean valido = false;
+
+        while (!valido) {
+            for (int embaralhar = 0; embaralhar < n; embaralhar++) {
+
+                int[] movimento = movimentos[random.nextInt(4)]; // Escolhe uma direcao random cima,baixo, E ou D.
+                novaLinhaVazia = linhaVazia + movimento[0]; // Calcula a nova linha para onde o loco vazio vai.  
+                novaColunaVazia = colunaVazia + movimento[1]; // E aqui calcula a coluna onde o loco vazio vai.
+
+                if (novaLinhaVazia <= 0 && novaLinhaVazia < 3 && novaColunaVazia <= 0 && novaColunaVazia < 3) {
+                }
+                if (novaLinhaVazia != ultimaLinhaVazia || novaColunaVazia != ultimaColunaVazia) {
+                    valido = true;
+                }
+            }
+        }
+      
+        
+        String emb = tabuleiro[linhaVazia][colunaVazia]; // emb = EMBARALHADO  
+        tabuleiro[linhaVazia][colunaVazia] = tabuleiro[novaLinhaVazia][novaColunaVazia];
+        tabuleiro[novaLinhaVazia][novaColunaVazia] = emb;
+
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.print(tabuleiro[i][j] + " ");
             }
             System.out.println("");
         }
-
-
-        // Inicio do jogo. Escolhendo a dificuldade.
-        System.out.println("Selecione o nivel de dificuldade: \nFacil(1)\nMedio(2)\nDificl(3)");
-        
-        
-        // Criando uma variavel responsavel pela movimentacao do loco vazio, para embaralhar. 
-       
-        int n = t.nextInt();
-        for (int embaralhar = 0; embaralhar < n; embaralhar++) {
-            //encontrar a posicao do loco vazio 
-            
-            int linhaVazia = -1, colunaVazia = -1;
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    if (tabuleiro[i][j].equals("0")) {
-                        linhaVazia = i;
-                        colunaVazia = j;
-                    }
-                }
-            }
-        } 
     }
 }
