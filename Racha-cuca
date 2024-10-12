@@ -1,0 +1,52 @@
+Trabalho pratico.
+
+package rachacuca;
+
+
+import java.util.Scanner;
+
+public class RachaCuca {
+
+    public static void main(String[] args) {
+        Scanner t = new Scanner(System.in);
+        
+        //Menu de inicializacao
+        System.out.println("Ola jogador! Seja bem vindo(a) ao Racha-Cuca!\nMenu:\nSair(0)\nIniciar(1)\nTutorial(2)");
+        
+        //Criando o tabuleiro do tipo String 
+        String[][] tabuleiro = {
+            {"1", "2", "3"},
+            {"4", "5", "6"},
+            {"7", "8", ""}
+        };
+        //Responsavel para apresentar o tabuleiro inicial.
+        for (int i = 0; i < 3; i++) {
+            for (int j = 0; j < 3; j++) {
+                System.out.print(tabuleiro[i][j] + " ");
+            }
+            System.out.println("");
+        }
+
+
+        // Inicio do jogo. Escolhendo a dificuldade.
+        System.out.println("Selecione o nivel de dificuldade: \nFacil(1)\nMedio(2)\nDificl(3)");
+        
+        
+        // Criando uma variavel responsavel pela movimentacao do loco vazio, para embaralhar. 
+       
+        int n = t.nextInt();
+        for (int embaralhar = 0; embaralhar < n; embaralhar++) {
+            //encontrar a posicao do loco vazio 
+            
+            int linhaVazia = -1, colunaVazia = -1;
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    if (tabuleiro[i][j].equals("0")) {
+                        linhaVazia = i;
+                        colunaVazia = j;
+                    }
+                }
+            }
+        } 
+    }
+}
