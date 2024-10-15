@@ -1,0 +1,37 @@
+#Return maior.
+
+
+package javaapplication1;
+
+import java.util.Scanner;
+
+public class JavaApplication1 {
+
+    // Void é o nome do metodo quando não é esperado um resultado
+    //Declaração de metodo é se existe o retorno e tipo, o identificador do metodo, e passar o parametro do metodo.
+    //Exemplo public static int (retornaMaior (int n1, int n2, int n3)
+    //Apos um return eu não consigo executar mais nenhum comando.
+    public static double retornaMaior(double n1, double n2, double n3) {
+
+        //verificando se o valor armazenado no n1 é o maior 
+        if (n2 >= n1 && n2 >= n3) {
+            return n2;
+        } else if (n3 >= n2 && n3 >= n1) {
+            return n3;
+        }
+
+        return n1;
+    }
+
+    public static void main(String[] args) {
+        Scanner t = new Scanner(System.in);
+
+        // n1 -> num1 copia o valor. 
+        System.out.println("Informe 3 valores; ");
+        double num1 = t.nextDouble(),
+                num2 = t.nextDouble(),
+                num3 = t.nextDouble();
+        double maiorElemento = retornaMaior(num1, num2, num3);
+        System.out.println(maiorElemento);
+    }
+}
