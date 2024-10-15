@@ -1,0 +1,40 @@
+package bhaskara;
+
+import java.util.Scanner;
+
+public class Bhaskara {
+
+    public static double coeficientes(double a, double b, double c) {
+
+        double delta;
+
+        delta = Math.pow(b, 2.0) - 4.0 * a * c;
+
+        return delta;
+    }
+    
+    //retrono de um vetor 
+    public static double[] calcRaiz(double delta, double a, double b){
+ 
+            
+       
+        
+    }
+
+    public static void main(String[] args) {
+        Scanner t = new Scanner(System.in);
+
+        double A = t.nextDouble(),
+                B = t.nextDouble(),
+                C = t.nextDouble();
+
+    }
+}
+/* Raiz quadrada 
+        double valorRaiz = Math.sqrt(9,2);
+        
+        # valor potencia 
+        double valorPot = Math.pow(2.0,3.0);
+        
+        
+ */
