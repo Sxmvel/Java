@@ -73,7 +73,6 @@ public class RachaCuca {
                 }
             }
         }
-
         //Embaralhando o tabuleiro 
         int novaLinhaVazia = 0, novaColunaVazia = 0;
         for (int embaralhar = 0; embaralhar < n; embaralhar++) {
@@ -90,7 +89,6 @@ public class RachaCuca {
             }
             
         }
-
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
                 System.out.print(tabuleiro[i][j] + " ");
@@ -99,4 +97,3 @@ public class RachaCuca {
         }
     }
 }
-
