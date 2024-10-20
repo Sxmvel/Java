@@ -32,21 +32,21 @@ public class RachaCuca {
             {"4", "5", "6"},
             {"7", "8", " "}
         };
-        int n = 0;
+        int nivel, embaralhadas = 0;
         int inicio = menu();
         if (inicio == 0) {
             System.out.println("Voce saiu do RACHA-CUCA");
         }
         if (inicio == 1) {
             System.out.println("Selecione o nivel de dificuldade: \nFacil(1)\nMedio(2)\nDificl(3)");
-            n = t.nextInt();
-            if (n == 1) {
-                n = 20;
+            nivel = t.nextInt();
+            if (nivel == 1) {
+                embaralhadas = 20;
             }
-            if (n == 2) {
-                n = 40;
+            if (nivel == 2) {
+                embaralhadas = 40;
             } else {
-                n = 80;
+                embaralhadas = 80;
             }
         }
         if (inicio == 2) {
@@ -75,7 +75,7 @@ public class RachaCuca {
         }
         //Embaralhando o tabuleiro 
         int novaLinhaVazia = 0, novaColunaVazia = 0;
-        for (int embaralhar = 0; embaralhar < n; embaralhar++) {
+        for (int embaralhar = 0; embaralhar < embaralhadas; embaralhar++) {
             int[] movimento = movimentos[random.nextInt(4)];
             novaLinhaVazia = linhaVazia + movimento[0];
             novaColunaVazia = colunaVazia + movimento[1];
