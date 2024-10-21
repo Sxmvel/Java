@@ -102,3 +102,136 @@ public class RachaCuca {
         }
     }
 }
+-------------------
+
+
+
+  //LOCALIZANDO A POSICAO VAZIA SE ESTIVER [0][0]
+                    if (tabuleiro[0][0].equals(" ")) {
+                        System.out.println("Informe qual numero deseja movimentar. 1 ou 3");
+                        alteracao = t.nextInt();
+                        if (alteracao == 1) {
+                            tabuleiro[0][1] = (" ");
+                        } else {
+                            if (alteracao == 3) {
+                                tabuleiro[1][0] = (" ");
+                            }
+                        }
+                    }
+                    //LOCALIZANDO A POSICAO VAZIA SE ESTIVER [0][1]  
+                    if (tabuleiro[0][1].equals(" ")) {
+                        System.out.println("Informe qual numero deseja movimentar. 1, 2 ou 4 ");
+                        alteracao = t.nextInt();
+                        if (alteracao == 1 || alteracao == 2) {
+                            tabuleiro[0][2] = (" ");
+                        } else {
+                            if (alteracao == 4) {
+                                tabuleiro[1][1] = (" ");
+                            }
+                        }
+                    }
+
+                    //LOCALIZANDO A POSICAO VAZIA SE ESTIVER [0][2]
+                    if (tabuleiro[0][2].equals(" ")) {
+                        System.out.println("Informe qual numero deseja movimentar. 2 ou 5 ");
+                        alteracao = t.nextInt();
+                        if (alteracao == 2) {
+                            tabuleiro[0][1] = (" ");
+                        } else {
+                            if (alteracao == 5) {
+                                tabuleiro[1][2] = (" ");
+                            }
+                        }
+                    }
+                    //LOCALIZANDO A POSICAO VAZIA SE ESTIVER [1][0]
+                    if(tabuleiro[1][0].equals(" ")){
+                        System.out.println("Informe qual numero deseja movimentar. 1, 4 ou 6");
+                        alteracao = t.nextInt();
+                        if(alteracao == 1){
+                            tabuleiro[0][0] = (" ");
+                        }if(alteracao == 4){
+                            tabuleiro[1][1] = (" ");
+                        }else{
+                            if(alteracao == 6){
+                                tabuleiro[1][2] = (" ");
+                            }
+                        }
+                    }
+                    
+                  //LOCALIZANDO A POSICAO VAZIA SE ESTIVER [1][1] 
+                  
+                  if(tabuleiro[1][1].equals(" ")){
+                      System.out.println("Informe qual numero deseja movimentar. 2, 4, 5 ou 7");
+                        alteracao = t.nextInt();
+                        if(alteracao == 2){
+                           tabuleiro[0][1] = (" ");
+                        }if(alteracao == 4){
+                             tabuleiro[1][0] = (" ");
+                        }if(alteracao == 5){
+                            tabuleiro[1][2] = (" ");
+                        }else{
+                            if(alteracao == 7){
+                                tabuleiro[2][1] = (" ");
+                            }
+                        }
+                  }
+                  
+                  //LOCALIZANDO A POSICAO VAZIA SE ESTIVER [1][2]   
+                    
+                 if(tabuleiro[1][2].equals(" ")){
+                      System.out.println("Informe qual numero deseja movimentar. 3, 5 ou 8");
+                        alteracao = t.nextInt(); 
+                    if(alteracao == 3){
+                       tabuleiro[0][2] = (" "); 
+                    }if(alteracao == 5){
+                        tabuleiro[1][1] = (" ");
+                    }else{
+                        if(alteracao == 8){
+                            tabuleiro[2][2] = (" ");
+                        }
+                    }    
+                 }
+                    
+                //LOCALIZANDO A POSICAO VAZIA SE ESTIVER [2][0]    
+                    
+                if(tabuleiro[2][0].equals(" ")){
+                      System.out.println("Informe qual numero deseja movimentar. 4 ou 7");
+                        alteracao = t.nextInt();
+                    if(alteracao == 4){
+                        tabuleiro[1][0] = (" ");
+                    }else{
+                        if(alteracao == 7){
+                          tabuleiro[2][1] = (" ");  
+                        }
+                    }    
+                }    
+                    
+                //LOCALIZANDO A POSICAO VAZIA SE ESTIVER [2][1]     
+                    
+                if(tabuleiro[2][1].equals(" ")){
+                      System.out.println("Informe qual numero deseja movimentar. 5, 7 ou 8");
+                        alteracao = t.nextInt();
+                    if(alteracao == 5){
+                        tabuleiro[1][1] = (" "); 
+                    }if(alteracao == 7){
+                         tabuleiro[2][0] = (" ");
+                    }else{
+                        if(alteracao == 8){
+                             tabuleiro[2][2] = (" ");
+                        }
+                    }      
+                }    
+                    
+                //LOCALIZANDO A POSICAO VAZIA SE ESTIVER [2][2]    
+                    
+                 if(tabuleiro[2][2].equals(" ")){
+                      System.out.println("Informe qual numero deseja movimentar. 8 ou 6");    
+                      alteracao = t.nextInt();
+                      if(alteracao == 6){
+                         tabuleiro[1][2] = (" "); 
+                      }else{
+                          if(alteracao == 8){
+                            tabuleiro[2][1] = (" ");  
+                          }
+                      }
+                 }
