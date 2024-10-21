@@ -1,18 +1,22 @@
 package rachacuca;
 
+
 import java.util.Random;
 import java.util.Scanner;
 
 public class RachaCuca {
 
     public static int menu() {
-        System.out.println("Ola jogador! Seja bem vindo(a) ao Racha-Cuca!\nMenu:\nSair(0).\nIniciar(1).\nTutorial(2).");
         Scanner t = new Scanner(System.in);
         int opcao;
-        opcao = t.nextInt();
-        if (opcao > 2) {
-            System.out.println("Opcao inexistente!");
-        }
+
+        do {
+            System.out.println("Ola jogador(a)! Seja bem vindo(a) ao Racha-Cuca!\nMenu:\nSair(0).\nIniciar(1).\nTutorial(2).");
+            opcao = t.nextInt();
+            if (opcao > 2 || opcao < 0) {
+                System.out.println("OPCAO DE MENU INVALIDA. TENTE NOVAMENTE!\n");
+            }
+        } while (opcao > 2 || opcao < 0);
         if (opcao == 1) {
             return 1;
         } else {
@@ -26,12 +30,13 @@ public class RachaCuca {
     public static void main(String[] args) {
         Scanner t = new Scanner(System.in);
 
-        //Criando o tabuleiro do tipo String 
+        //Criando o tabuleiro do tipo String, estatico. 
         String[][] tabuleiro = {
             {"1", "2", "3"},
             {"4", "5", "6"},
             {"7", "8", " "}
         };
+        
         int nivel, embaralhadas = 0;
         int inicio = menu();
         if (inicio == 0) {
@@ -79,7 +84,7 @@ public class RachaCuca {
             int[] movimento = movimentos[random.nextInt(4)];
             novaLinhaVazia = linhaVazia + movimento[0];
             novaColunaVazia = colunaVazia + movimento[1];
-            
+
             if (novaLinhaVazia < 3 && novaColunaVazia < 3 && novaLinhaVazia >= 0 && novaColunaVazia >= 0) {
                 String emb = tabuleiro[linhaVazia][colunaVazia];
                 tabuleiro[linhaVazia][colunaVazia] = tabuleiro[novaLinhaVazia][novaColunaVazia];
