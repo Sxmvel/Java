@@ -43,6 +43,11 @@ public class RachaCuca {
             {"4", "5", "6"},
             {"7", "8", " "}
         };
+        String[][] original = {
+            {"1", "2", "3"},
+            {"4", "5", "6"},
+            {"7", "8", " "}
+        };
 
         int nivel, embaralhadas = 0;
         int inicio = menu();
@@ -103,190 +108,197 @@ public class RachaCuca {
                 colunaVazia = novaColunaVazia;
             }
         }
-        do{
-        for (int i = 0; i < 3; i++) {
-            for (int j = 0; j < 3; j++) {
-                System.out.print(tabuleiro[i][j] + " ");
+        
+        do {
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    System.out.print(tabuleiro[i][j] + " ");
+                }
+                System.out.println("");
             }
-            System.out.println("");
-        }
-        String movimento, guardar; //VALIDAR O MOVIMENTO E GUARDAR A STRING.
-        //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][0]. DE INICIO PARA FILEIRA DE CIMA
-        if (tabuleiro[0][0].equals(" ")) {
-            System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " ou " + tabuleiro[1][0]);
-            movimento = t.nextLine();
-            if (movimento.equals(tabuleiro[0][1])) {
-                guardar = tabuleiro[0][1]; // guardar o valor do espaco que ira receber o espaco vazio 
-                tabuleiro[0][1] = tabuleiro[0][0];// trocando o espaco vazio de lugar com o vaor sugerido pelo o usuario 
-                tabuleiro[0][0] = guardar;// resganto o valor do espaco preenchido para que nao tenha dois espaco vazio no tabuleiro.   
-            } else {
+            
+
+            
+            String movimento, guardar; //VALIDAR O MOVIMENTO E GUARDAR A STRING.
+
+            //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][0]. DE INICIO PARA FILEIRA DE CIMA, 1 Loop de repeticao. LINHA SUPERIOR
+            if (tabuleiro[0][0].equals(" ")) {
+                System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " ou " + tabuleiro[1][0]);
+                movimento = t.nextLine();
+                if (movimento.equals(tabuleiro[0][1])) {
+                    guardar = tabuleiro[0][1]; // guardar o valor do espaco que ira receber o espaco vazio 
+                    tabuleiro[0][1] = tabuleiro[0][0];// trocando o espaco vazio de lugar com o vaor sugerido pelo o usuario 
+                    tabuleiro[0][0] = guardar;// resganto o valor do espaco preenchido para que nao tenha dois espaco vazio no tabuleiro.   
+                }
                 if (movimento.equals(tabuleiro[1][0])) {
                     guardar = tabuleiro[1][0];
                     tabuleiro[1][0] = tabuleiro[0][0];
                     tabuleiro[0][0] = guardar;
                 }
             }
-        }
-        //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][1]. 
-        if (tabuleiro[0][1].equals(" ")) {
-            System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][0] + " , " + tabuleiro[0][2] + " ou " + tabuleiro[1][1]);
-            movimento = t.nextLine();
-            if (movimento.equals(tabuleiro[0][0])) {
-                guardar = tabuleiro[0][0];
-                tabuleiro[0][0] = tabuleiro[0][1];
-                tabuleiro[0][1] = guardar;
-            }
-            if (movimento.equals(tabuleiro[0][2])) {
-                guardar = tabuleiro[0][2];
-                tabuleiro[0][2] = tabuleiro[0][1];
-                tabuleiro[0][1] = guardar;
-            } else {
+
+            //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][1]. 2 Loop de repeticao. LINHA SUPERIOR
+            if (tabuleiro[0][1].equals(" ")) {
+                System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][0] + " , " + tabuleiro[0][2] + " ou " + tabuleiro[1][1]);
+                movimento = t.nextLine();
+                if (movimento.equals(tabuleiro[0][0])) {
+                    guardar = tabuleiro[0][0];
+                    tabuleiro[0][0] = tabuleiro[0][1];
+                    tabuleiro[0][1] = guardar;
+                }
+                if (movimento.equals(tabuleiro[0][2])) {
+                    guardar = tabuleiro[0][2];
+                    tabuleiro[0][2] = tabuleiro[0][1];
+                    tabuleiro[0][1] = guardar;
+                }
                 if (movimento.equals(tabuleiro[1][1])) {
                     guardar = tabuleiro[1][1];
                     tabuleiro[1][1] = tabuleiro[0][1];
                     tabuleiro[0][1] = guardar;
                 }
+
             }
-        }
-        //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][2].
-        if (tabuleiro[0][2].equals(" ")) {
-            System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " ou " + tabuleiro[1][2]);
-            movimento = t.nextLine();
-            if (movimento.equals(tabuleiro[0][1])) {
-                guardar = tabuleiro[0][1];
-                tabuleiro[0][1] = tabuleiro[0][2];
-                tabuleiro[0][2] = guardar;
-            } else {
+            //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][2]. 3 Loop de repeticao. LINHA SUPERIOR 
+
+            if (tabuleiro[0][2].equals(" ")) {
+                System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " ou " + tabuleiro[1][2]);
+                movimento = t.nextLine();
+                if (movimento.equals(tabuleiro[0][1])) {
+                    guardar = tabuleiro[0][1];
+                    tabuleiro[0][1] = tabuleiro[0][2];
+                    tabuleiro[0][2] = guardar;
+                }
                 if (movimento.equals(tabuleiro[1][2])) {
                     guardar = tabuleiro[1][2];
                     tabuleiro[1][2] = tabuleiro[0][2];
                     tabuleiro[0][2] = guardar;
                 }
+
             }
-        }
-        //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][0].
-        if (tabuleiro[1][0].equals(" ")) {
-            System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][0] + " , " + tabuleiro[1][1] + " ou " + tabuleiro[2][0]);
-            movimento = t.nextLine();
-            if (movimento.equals(tabuleiro[0][0])) {
-                guardar = tabuleiro[0][0];
-                tabuleiro[0][0] = tabuleiro[1][0];
-                tabuleiro[1][0] = guardar;
-            }
-            if (movimento.equals(tabuleiro[1][1])) {
-                guardar = tabuleiro[1][1];
-                tabuleiro[1][1] = tabuleiro[1][0];
-                tabuleiro[1][0] = guardar;
-            } else {
+
+            //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][0]. 4 Loop de repeticao. LINHA CENTRAL 
+            if (tabuleiro[1][0].equals(" ")) {
+                System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][0] + " , " + tabuleiro[1][1] + " ou " + tabuleiro[2][0]);
+                movimento = t.nextLine();
+                if (movimento.equals(tabuleiro[0][0])) {
+                    guardar = tabuleiro[0][0];
+                    tabuleiro[0][0] = tabuleiro[1][0];
+                    tabuleiro[1][0] = guardar;
+                }
+                if (movimento.equals(tabuleiro[1][1])) {
+                    guardar = tabuleiro[1][1];
+                    tabuleiro[1][1] = tabuleiro[1][0];
+                    tabuleiro[1][0] = guardar;
+                }
                 if (movimento.equals(tabuleiro[2][0])) {
                     guardar = tabuleiro[2][0];
                     tabuleiro[2][0] = tabuleiro[1][0];
                     tabuleiro[1][0] = guardar;
                 }
             }
-        }
-        //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][1].
-        if (tabuleiro[1][1].equals(" ")) {
-            System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " , " + tabuleiro[1][0] + " , " + tabuleiro[1][2] + " ou " + tabuleiro[2][1]);
-            movimento = t.nextLine();
-            if (movimento.equals(tabuleiro[0][1])) {
-                guardar = tabuleiro[0][1];
-                tabuleiro[0][1] = tabuleiro[1][1];
-                tabuleiro[1][1] = guardar;
-            }
-            if (movimento.equals(tabuleiro[1][0])) {
-                guardar = tabuleiro[1][0];
-                tabuleiro[1][0] = tabuleiro[1][1];
-                tabuleiro[1][1] = guardar;
-            }
-            if (movimento.equals(tabuleiro[1][2])) {
-                guardar = tabuleiro[1][2];
-                tabuleiro[1][2] = tabuleiro[1][1];
-                tabuleiro[1][1] = guardar;
-            } else {
+
+            //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][1]. 5 Loop de repeticao. LINHA CENTRAL
+            if (tabuleiro[1][1].equals(" ")) {
+                System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " , " + tabuleiro[1][0] + " , " + tabuleiro[1][2] + " ou " + tabuleiro[2][1]);
+                movimento = t.nextLine();
+                if (movimento.equals(tabuleiro[0][1])) {
+                    guardar = tabuleiro[0][1];
+                    tabuleiro[0][1] = tabuleiro[1][1];
+                    tabuleiro[1][1] = guardar;
+                }
+                if (movimento.equals(tabuleiro[1][0])) {
+                    guardar = tabuleiro[1][0];
+                    tabuleiro[1][0] = tabuleiro[1][1];
+                    tabuleiro[1][1] = guardar;
+                }
+                if (movimento.equals(tabuleiro[1][2])) {
+                    guardar = tabuleiro[1][2];
+                    tabuleiro[1][2] = tabuleiro[1][1];
+                    tabuleiro[1][1] = guardar;
+                }
                 if (movimento.equals(tabuleiro[2][1])) {
                     guardar = tabuleiro[2][1];
                     tabuleiro[2][1] = tabuleiro[1][1];
                     tabuleiro[1][1] = guardar;
                 }
-            }
-        }
 
-        //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][2].
-        if (tabuleiro[1][2].equals(" ")) {
-            System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][2] + " , " + tabuleiro[1][1] + " , " + tabuleiro[2][2]);
-            movimento = t.nextLine();
-            if (movimento.equals(tabuleiro[0][2])) {
-                guardar = tabuleiro[0][2];
-                tabuleiro[0][2] = tabuleiro[1][2];
-                tabuleiro[1][2] = guardar;
             }
-            if (movimento.equals(tabuleiro[1][1])) {
-                guardar = tabuleiro[1][1];
-                tabuleiro[1][1] = tabuleiro[1][2];
-                tabuleiro[1][2] = guardar;
-            } else {
+
+            //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][2]. 6 Loop de repeticao. LINHA CENTRAL
+            if (tabuleiro[1][2].equals(" ")) {
+                System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][2] + " , " + tabuleiro[1][1] + " , " + tabuleiro[2][2]);
+                movimento = t.nextLine();
+                if (movimento.equals(tabuleiro[0][2])) {
+                    guardar = tabuleiro[0][2];
+                    tabuleiro[0][2] = tabuleiro[1][2];
+                    tabuleiro[1][2] = guardar;
+                }
+                if (movimento.equals(tabuleiro[1][1])) {
+                    guardar = tabuleiro[1][1];
+                    tabuleiro[1][1] = tabuleiro[1][2];
+                    tabuleiro[1][2] = guardar;
+                }
                 if (movimento.equals(tabuleiro[2][2])) {
                     guardar = tabuleiro[2][2];
                     tabuleiro[2][2] = tabuleiro[1][2];
                     tabuleiro[1][2] = guardar;
                 }
+
             }
-        }
-        //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][0].
-        if (tabuleiro[2][0].equals(" ")) {
-            System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][0] + " , " + tabuleiro[2][1]);
-            movimento = t.nextLine();
-            if (movimento.equals(tabuleiro[1][0])) {
-                guardar = tabuleiro[1][0];
-                tabuleiro[1][0] = tabuleiro[2][0];
-                tabuleiro[2][0] = guardar;
-            } else {
+            //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][0]. 7 Loop de repeticao. LINHA INFERIOR
+            if (tabuleiro[2][0].equals(" ")) {
+                System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][0] + " , " + tabuleiro[2][1]);
+                movimento = t.nextLine();
+                if (movimento.equals(tabuleiro[1][0])) {
+                    guardar = tabuleiro[1][0];
+                    tabuleiro[1][0] = tabuleiro[2][0];
+                    tabuleiro[2][0] = guardar;
+                }
                 if (movimento.equals(tabuleiro[2][1])) {
                     guardar = tabuleiro[2][1];
                     tabuleiro[2][1] = tabuleiro[2][0];
                     tabuleiro[2][0] = guardar;
                 }
+
             }
-        }
-        //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][1].
-        if (tabuleiro[2][1].equals(" ")) {
-            System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][1] + " , " + tabuleiro[2][0] + " , " + tabuleiro[2][2]);
-            movimento = t.nextLine();
-            if (movimento.equals(tabuleiro[1][1])) {
-                guardar = tabuleiro[1][1];
-                tabuleiro[1][1] = tabuleiro[2][1];
-                tabuleiro[2][1] = guardar;
-            }
-            if (movimento.equals(tabuleiro[2][0])) {
-                guardar = tabuleiro[2][0];
-                tabuleiro[2][0] = tabuleiro[2][1];
-                tabuleiro[2][1] = guardar;
-            } else {
+            //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][1]. 8 Loop de repeticao. LINHA INFERIOR
+            if (tabuleiro[2][1].equals(" ")) {
+                System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][1] + " , " + tabuleiro[2][0] + " , " + tabuleiro[2][2]);
+                movimento = t.nextLine();
+                if (movimento.equals(tabuleiro[1][1])) {
+                    guardar = tabuleiro[1][1];
+                    tabuleiro[1][1] = tabuleiro[2][1];
+                    tabuleiro[2][1] = guardar;
+                }
+                if (movimento.equals(tabuleiro[2][0])) {
+                    guardar = tabuleiro[2][0];
+                    tabuleiro[2][0] = tabuleiro[2][1];
+                    tabuleiro[2][1] = guardar;
+                }
                 if (movimento.equals(tabuleiro[2][2])) {
                     guardar = tabuleiro[2][2];
                     tabuleiro[2][2] = tabuleiro[2][1];
                     tabuleiro[2][1] = guardar;
                 }
+
             }
-        }
-        //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][2].
-        if (tabuleiro[2][2].equals(" ")) {
-            System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][2] + " , " + tabuleiro[2][1]);
-            movimento = t.nextLine();
-            if (movimento.equals(tabuleiro[1][2])) {
-                guardar = tabuleiro[1][2];
-                tabuleiro[1][2] = tabuleiro[2][2];
-                tabuleiro[2][2] = guardar;
-            } else {
-                if (movimento.equals(tabuleiro[2][1])) {
-                    guardar = tabuleiro[2][1];
-                    tabuleiro[2][1] = tabuleiro[2][2];
+            //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][2]. 9 Loop de repeticao. LINHA INFERIOR
+            if (tabuleiro[2][2].equals(" ")) {
+                System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][2] + " , " + tabuleiro[2][1]);
+                movimento = t.nextLine();
+                if (movimento.equals(tabuleiro[1][2])) {
+                    guardar = tabuleiro[1][2];
+                    tabuleiro[1][2] = tabuleiro[2][2];
                     tabuleiro[2][2] = guardar;
                 }
-            }
+                    if (movimento.equals(tabuleiro[2][1])) {
+                        guardar = tabuleiro[2][1];
+                        tabuleiro[2][1] = tabuleiro[2][2];
+                        tabuleiro[2][2] = guardar;
+                    }
+                
 
-        }
-        }while(!tabuleiro[2][0].equals(tabuleiro[2][1]));
+            }
+        } while(!tabuleiro[0][0].equals("1") || !tabuleiro[0][1].equals("2") || !tabuleiro[0][2].equals("3") || !tabuleiro[1][0].equals("4") || !tabuleiro[1][1].equals("5") || !tabuleiro[1][2].equals("6") || !tabuleiro[2][0].equals("7") || !tabuleiro[2][1].equals("8") || !tabuleiro[2][2].equals("9")) ;
     }
 }
