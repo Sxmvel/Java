@@ -1,0 +1,49 @@
+package exercicio5;
+
+import java.util.Scanner;
+
+public class Exercicio5 {
+
+    public static String algarismoRomanoDezena(int valorD) {
+        //10,20,30,40,...
+        String valoresRomD[] = {"X", "XX", "XXX", "L", "LX", "LXX", "LXXX", "XC", "C"};
+        valorD--;
+        if (valorD >= 0 && valorD < 10) {
+            return valoresRomD[valorD];
+        } else {
+            return "";
+        }
+    }
+
+    public static String algarismoRomanoUnidade(int valorU) {
+        //1,2,3,4,5,6,7,9,10.
+        String valoresRomU[] = {"I", "II", "III", "IV", "V", "VI", "VII", "VIII", "IX"};
+        valorU--;
+        if (valorU >= 0 && valorU < 9) {
+            return valoresRomU[valorU];
+        } else {
+            return "";
+        }
+    }
+
+    public static void imprimeNumRomano(int num) {
+        if (num > 100 || num < 1) {
+            System.out.println("Valor informado fora do intervalo! ");
+        } else {
+            // O numero representa um valor dentro do intervalo
+
+            int d = num / 10; // quaciente da divisao.
+            int u = num % 10;// pegar o resto da divisao.
+
+            System.out.println(algarismoRomanoDezena(d) + algarismoRomanoUnidade(u));
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner t = new Scanner(System.in);
+        System.out.println("Informe um valor: ");
+        int valor = t.nextInt();
+        imprimeNumRomano(valor); // INVOCANDO A FUNÇÃO PARA CONVERTER O valor.
+
+    }
+}
