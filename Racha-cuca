@@ -9,7 +9,7 @@ public class RachaCuca {
     public static int menu() {
         Scanner t = new Scanner(System.in);
         int opcao = 3;
-
+        int cont = 1;
         do {
             System.out.println("Ola jogador(a)! Seja bem-vindo(a) ao Racha-Cuca!\nMenu:\nSair(0).\nIniciar(1).\nTutorial(2).");
             try {
@@ -24,14 +24,8 @@ public class RachaCuca {
             }
 
         } while (opcao > 2 || opcao < 0);
-        if (opcao == 1) {
-            return 1;
-        } else {
-            if (opcao == 2) {
-                return 2;
-            }
-        }
-        return 0;
+
+        return opcao;
     }
 
     public static void main(String[] args) {
@@ -43,41 +37,31 @@ public class RachaCuca {
             {"4", "5", "6"},
             {"7", "8", " "}
         };
-
-        int nivel, embaralhadas = 0;
+        double nivel, embaralhadas = 0;
         int inicio = menu();
         if (inicio == 0) {
             System.out.println("Voce saiu do RACHA-CUCA! Obrigado(a) por jogar.");
             System.exit(0); // Comando para encerar o programa.
         }
         if (inicio == 1) {
-            System.out.println("Selecione o nivel de dificuldade: \nFacil(1)\nMedio(2)\nDificl(3)");
-            nivel = t.nextInt();
-            if (nivel == 1) {
-                embaralhadas = 20;
-            } else {
-                if (nivel == 2) {
-                    embaralhadas = 40;
-                } else {
-                    if (nivel == 3) {
-                        embaralhadas = 80;
-                    }
+            do {
+                System.out.println("Selecione o nivel de dificuldade: \nFacil(1)\nMedio(2)\nDificl(3)");
+                nivel = t.nextDouble();
+                if (nivel >= 1 || nivel <= 3) {
+                    embaralhadas = Math.pow(2, nivel) * 10;
                 }
-            }
+                if (nivel < 1 || nivel > 3) {
+                    System.out.println("NIVEL INFORMADO INVALIDO! \n");
+                }
+            } while (nivel < 1 || nivel > 3);
         }
         if (inicio == 2) {
             System.out.println("AQUI IREMOS ADICIONAR O TUTORIAL DO RACHA CUCA");
             System.exit(0); // Comando para encerar o programa.
-
         }
         // Criando uma regra de movimento para embaralhar o tabuleiro.
         Random random = new Random();
-        int[][] movimentos = {
-            {0, -1}, // Para Cima
-            {0, 1}, //Para Baixo
-            {1, 0}, //Para Direita
-            {-1, 0} // Para esquerda
-        };
+        int[][] movimentos = {{0, -1}, {0, 1}, {1, 0}, {-1, 0}};
 
         //Inicilizando as variaveis
         int linhaVazia = -1, colunaVazia = -1;
@@ -90,33 +74,22 @@ public class RachaCuca {
             }
         }
         //Embaralhando o tabuleiro referente a variavel da linha 38 (String embaralhado)
-        int novaLinhaVazia = 0, novaColunaVazia = 0;
+        int novaLinhaVazia, novaColunaVazia;
         for (int embaralhar = 0; embaralhar < embaralhadas; embaralhar++) {
             int[] movimento = movimentos[random.nextInt(4)];
             novaLinhaVazia = linhaVazia + movimento[0];
             novaColunaVazia = colunaVazia + movimento[1];
             if (novaLinhaVazia < 3 && novaColunaVazia < 3 && novaLinhaVazia >= 0 && novaColunaVazia >= 0) {
-
                 String temp = tabuleiro[linhaVazia][colunaVazia];
                 tabuleiro[linhaVazia][colunaVazia] = tabuleiro[novaLinhaVazia][novaColunaVazia];
                 tabuleiro[novaLinhaVazia][novaColunaVazia] = temp;
-
                 // Atualizando a posição vazia
                 linhaVazia = novaLinhaVazia;
                 colunaVazia = novaColunaVazia;
             }
         }
-
         do {
-            for (int i = 0; i < 3; i++) {
-                for (int j = 0; j < 3; j++) {
-                    System.out.print(tabuleiro[i][j] + " ");
-                }
-                System.out.println("");
-            }
-
             String movimento, guardar; //VALIDAR O MOVIMENTO E GUARDAR A STRING.
-
             //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][0]. DE INICIO PARA FILEIRA DE CIMA, 1 Loop de repeticao. LINHA SUPERIOR
             if (tabuleiro[0][0].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " ou " + tabuleiro[1][0]);
@@ -150,7 +123,6 @@ public class RachaCuca {
                     tabuleiro[1][1] = tabuleiro[0][1];
                     tabuleiro[0][1] = guardar;
                 }
-
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][2]. 3 Loop de repeticao. LINHA SUPERIOR 
             else if (tabuleiro[0][2].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " ou " + tabuleiro[1][2]);
@@ -165,7 +137,6 @@ public class RachaCuca {
                     tabuleiro[1][2] = tabuleiro[0][2];
                     tabuleiro[0][2] = guardar;
                 }
-
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][0]. 4 Loop de repeticao. LINHA CENTRAL 
             else if (tabuleiro[1][0].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][0] + " , " + tabuleiro[1][1] + " ou " + tabuleiro[2][0]);
@@ -228,7 +199,6 @@ public class RachaCuca {
                     tabuleiro[2][2] = tabuleiro[1][2];
                     tabuleiro[1][2] = guardar;
                 }
-
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][0]. 7 Loop de repeticao. LINHA INFERIOR
             else if (tabuleiro[2][0].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][0] + " , " + tabuleiro[2][1]);
@@ -243,7 +213,6 @@ public class RachaCuca {
                     tabuleiro[2][1] = tabuleiro[2][0];
                     tabuleiro[2][0] = guardar;
                 }
-
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][1]. 8 Loop de repeticao. LINHA INFERIOR
             else if (tabuleiro[2][1].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][1] + " , " + tabuleiro[2][0] + " , " + tabuleiro[2][2]);
@@ -263,7 +232,6 @@ public class RachaCuca {
                     tabuleiro[2][2] = tabuleiro[2][1];
                     tabuleiro[2][1] = guardar;
                 }
-
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][2]. 9 Loop de repeticao. LINHA INFERIOR
             else if (tabuleiro[2][2].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][2] + " , " + tabuleiro[2][1]);
@@ -278,9 +246,13 @@ public class RachaCuca {
                     tabuleiro[2][1] = tabuleiro[2][2];
                     tabuleiro[2][2] = guardar;
                 }
-
             }
-
+            for (int i = 0; i < 3; i++) {
+                for (int j = 0; j < 3; j++) {
+                    System.out.print(tabuleiro[i][j] + " ");
+                }
+                System.out.println(" ");
+            }
         } while (!tabuleiro[0][0].equals("1") || !tabuleiro[0][1].equals("2") || !tabuleiro[0][2].equals("3") || !tabuleiro[1][0].equals("4") || !tabuleiro[1][1].equals("5") || !tabuleiro[1][2].equals("6") || !tabuleiro[2][0].equals("7") || !tabuleiro[2][1].equals("8") || !tabuleiro[2][2].equals(" "));
         for (int i = 0; i < 3; i++) {
             for (int j = 0; j < 3; j++) {
