@@ -86,10 +86,11 @@ public class RachaCuca {
                 colunaVazia = novaColunaVazia;
             }
         }
-        int cont = 1;
+        int cont = 0;
         do {
-            String movimento, guardar;//VALIDAR O MOVIMENTO E GUARDAR A STRING.
-
+            String movimento = " ", guardar;//VALIDAR O MOVIMENTO E GUARDAR A STRING.
+            boolean movimentoValido = false;
+            String possibilidade = " ";
             //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][0]. DE INICIO PARA FILEIRA DE CIMA, 1 Loop de repeticao. LINHA SUPERIOR
             if (tabuleiro[0][0].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " ou " + tabuleiro[1][0]);
@@ -97,16 +98,14 @@ public class RachaCuca {
                 if (movimento.equals(tabuleiro[0][1])) {
                     guardar = tabuleiro[0][1]; // guardar o valor do espaco que ira receber o espaco vazio 
                     tabuleiro[0][1] = tabuleiro[0][0];// trocando o espaco vazio de lugar com o vaor sugerido pelo o usuario 
-                    tabuleiro[0][0] = guardar;// resganto o valor do espaco preenchido para que nao tenha dois espaco vazio no tabuleiro.   
+                    tabuleiro[0][0] = guardar;// resganto o valor do espaco preenchido para que nao tenha dois espaco vazio no tabuleiro.
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[1][0])) {
                     guardar = tabuleiro[1][0];
                     tabuleiro[1][0] = tabuleiro[0][0];
                     tabuleiro[0][0] = guardar;
-                } else if (!movimento.equals(tabuleiro[0][1]) && !movimento.equals(tabuleiro[1][0])) {
-                    System.out.println("Nao e possivel mover a peca: " + movimento);
-                    cont--;
+                    movimentoValido = true;
                 }
-                System.out.println("Quantidade de jogadas ate agora: " + cont++);
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][1]. 2 Loop de repeticao. LINHA SUPERIOR
             else if (tabuleiro[0][1].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][0] + " , " + tabuleiro[0][2] + " ou " + tabuleiro[1][1]);
@@ -115,19 +114,18 @@ public class RachaCuca {
                     guardar = tabuleiro[0][0];
                     tabuleiro[0][0] = tabuleiro[0][1];
                     tabuleiro[0][1] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[0][2])) {
                     guardar = tabuleiro[0][2];
                     tabuleiro[0][2] = tabuleiro[0][1];
                     tabuleiro[0][1] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[1][1])) {
                     guardar = tabuleiro[1][1];
                     tabuleiro[1][1] = tabuleiro[0][1];
                     tabuleiro[0][1] = guardar;
-                } else if (!movimento.equals(tabuleiro[0][0]) && !movimento.equals(tabuleiro[0][2]) && !movimento.equals(tabuleiro[1][1])) {
-                    System.out.println("Nao e possivel mover a peca: " + movimento);
-                    cont--;
+                    movimentoValido = true;
                 }
-                System.out.println("Quantidade de jogadas ate agora: " + cont++);
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][2]. 3 Loop de repeticao. LINHA SUPERIOR 
             else if (tabuleiro[0][2].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " ou " + tabuleiro[1][2]);
@@ -136,15 +134,13 @@ public class RachaCuca {
                     guardar = tabuleiro[0][1];
                     tabuleiro[0][1] = tabuleiro[0][2];
                     tabuleiro[0][2] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[1][2])) {
                     guardar = tabuleiro[1][2];
                     tabuleiro[1][2] = tabuleiro[0][2];
                     tabuleiro[0][2] = guardar;
-                } else if (!movimento.equals(tabuleiro[0][1]) && !movimento.equals(tabuleiro[1][2])) {
-                    System.out.println("Nao e possivel mover a peca: " + movimento);
-                    cont--;
+                    movimentoValido = true;
                 }
-                System.out.println("Quantidade de jogadas ate agora: " + cont++);
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][0]. 4 Loop de repeticao. LINHA CENTRAL 
             else if (tabuleiro[1][0].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][0] + " , " + tabuleiro[1][1] + " ou " + tabuleiro[2][0]);
@@ -153,19 +149,18 @@ public class RachaCuca {
                     guardar = tabuleiro[0][0];
                     tabuleiro[0][0] = tabuleiro[1][0];
                     tabuleiro[1][0] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[1][1])) {
                     guardar = tabuleiro[1][1];
                     tabuleiro[1][1] = tabuleiro[1][0];
                     tabuleiro[1][0] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[2][0])) {
                     guardar = tabuleiro[2][0];
                     tabuleiro[2][0] = tabuleiro[1][0];
                     tabuleiro[1][0] = guardar;
-                } else if (!movimento.equals(tabuleiro[0][0]) && !movimento.equals(tabuleiro[1][1]) && !movimento.equals(tabuleiro[2][0])) {
-                    System.out.println("Nao e possivel mover a peca: " + movimento);
-                    cont--;
+                    movimentoValido = true;
                 }
-                System.out.println("Quantidade de jogadas ate agora: " + cont++);
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][1]. 5 Loop de repeticao. LINHA CENTRAL
             else if (tabuleiro[1][1].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][1] + " , " + tabuleiro[1][0] + " , " + tabuleiro[1][2] + " ou " + tabuleiro[2][1]);
@@ -174,23 +169,23 @@ public class RachaCuca {
                     guardar = tabuleiro[0][1];
                     tabuleiro[0][1] = tabuleiro[1][1];
                     tabuleiro[1][1] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[1][0])) {
                     guardar = tabuleiro[1][0];
                     tabuleiro[1][0] = tabuleiro[1][1];
                     tabuleiro[1][1] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[1][2])) {
                     guardar = tabuleiro[1][2];
                     tabuleiro[1][2] = tabuleiro[1][1];
                     tabuleiro[1][1] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[2][1])) {
                     guardar = tabuleiro[2][1];
                     tabuleiro[2][1] = tabuleiro[1][1];
                     tabuleiro[1][1] = guardar;
-                } else if (!movimento.equals(tabuleiro[0][1]) && !movimento.equals(tabuleiro[1][0]) && !movimento.equals(tabuleiro[1][2]) && !movimento.equals(tabuleiro[2][1])) {
-                    System.out.println("Nao e possivel mover a peca: " + movimento);
-                    cont--;
+                    movimentoValido = true;
                 }
-                System.out.println("Quantidade de jogadas ate agora: " + cont++);
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][2]. 6 Loop de repeticao. LINHA CENTRAL
             else if (tabuleiro[1][2].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[0][2] + " , " + tabuleiro[1][1] + " , " + tabuleiro[2][2]);
@@ -199,19 +194,18 @@ public class RachaCuca {
                     guardar = tabuleiro[0][2];
                     tabuleiro[0][2] = tabuleiro[1][2];
                     tabuleiro[1][2] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[1][1])) {
                     guardar = tabuleiro[1][1];
                     tabuleiro[1][1] = tabuleiro[1][2];
                     tabuleiro[1][2] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[2][2])) {
                     guardar = tabuleiro[2][2];
                     tabuleiro[2][2] = tabuleiro[1][2];
                     tabuleiro[1][2] = guardar;
-                } else if (!movimento.equals(tabuleiro[0][2]) && !movimento.equals(tabuleiro[1][1]) && !movimento.equals(tabuleiro[2][2])) {
-                    System.out.println("Nao e possivel mover a peca: " + movimento);
-                    cont--;
+                    movimentoValido = true;
                 }
-                System.out.println("Quantidade de jogadas ate agora: " + cont++);
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][0]. 7 Loop de repeticao. LINHA INFERIOR
             else if (tabuleiro[2][0].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][0] + " , " + tabuleiro[2][1]);
@@ -220,15 +214,13 @@ public class RachaCuca {
                     guardar = tabuleiro[1][0];
                     tabuleiro[1][0] = tabuleiro[2][0];
                     tabuleiro[2][0] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[2][1])) {
                     guardar = tabuleiro[2][1];
                     tabuleiro[2][1] = tabuleiro[2][0];
                     tabuleiro[2][0] = guardar;
-                } else if (!movimento.equals(tabuleiro[1][0]) && !movimento.equals(tabuleiro[2][1])) {
-                    System.out.println("Nao e possivel mover a peca: " + movimento);
-                    cont--;
+                    movimentoValido = true;
                 }
-                System.out.println("Quantidade de jogadas ate agora: " + cont++);
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][1]. 8 Loop de repeticao. LINHA INFERIOR
             else if (tabuleiro[2][1].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][1] + " , " + tabuleiro[2][0] + " , " + tabuleiro[2][2]);
@@ -237,19 +229,18 @@ public class RachaCuca {
                     guardar = tabuleiro[1][1];
                     tabuleiro[1][1] = tabuleiro[2][1];
                     tabuleiro[2][1] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[2][0])) {
                     guardar = tabuleiro[2][0];
                     tabuleiro[2][0] = tabuleiro[2][1];
                     tabuleiro[2][1] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[2][2])) {
                     guardar = tabuleiro[2][2];
                     tabuleiro[2][2] = tabuleiro[2][1];
                     tabuleiro[2][1] = guardar;
-                } else if (!movimento.equals(tabuleiro[1][1]) && !movimento.equals(tabuleiro[2][0]) && !movimento.equals(tabuleiro[2][2])) {
-                    System.out.println("Nao e possivel mover a peca: " + movimento);
-                    cont--;
+                    movimentoValido = true;
                 }
-                System.out.println("Quantidade de jogadas ate agora: " + cont++);
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [2][2]. 9 Loop de repeticao. LINHA INFERIOR
             else if (tabuleiro[2][2].equals(" ")) {
                 System.out.println("Qual numero voce deseja movimentar? " + tabuleiro[1][2] + " , " + tabuleiro[2][1]);
@@ -258,19 +249,23 @@ public class RachaCuca {
                     guardar = tabuleiro[1][2];
                     tabuleiro[1][2] = tabuleiro[2][2];
                     tabuleiro[2][2] = guardar;
+                    movimentoValido = true;
                 } else if (movimento.equals(tabuleiro[2][1])) {
                     guardar = tabuleiro[2][1];
                     tabuleiro[2][1] = tabuleiro[2][2];
                     tabuleiro[2][2] = guardar;
-                } else if (!movimento.equals(tabuleiro[1][2]) && !movimento.equals(tabuleiro[2][1])) {
-                    System.out.println("Nao e possivel mover a peca" + movimento);
-                    cont--;
+                    movimentoValido = true;
                 }
-                System.out.println("Quantidade de jogadas ate agora: " + cont++);
+            }
+            if (!movimentoValido && !movimento.isEmpty() ) {
+                System.out.println("Nao e possivel mover a peca: " + movimento);
             }
             imprimirTabuleiro(tabuleiro);
+            if (movimentoValido) {
+                cont++;
+                System.out.println("Quantidade de jogadas ate agora: " + cont);
+            }         
         } while (!tabuleiro[0][0].equals("1") || !tabuleiro[0][1].equals("2") || !tabuleiro[0][2].equals("3") || !tabuleiro[1][0].equals("4") || !tabuleiro[1][1].equals("5") || !tabuleiro[1][2].equals("6") || !tabuleiro[2][0].equals("7") || !tabuleiro[2][1].equals("8") || !tabuleiro[2][2].equals(" "));
         System.out.println("PARABENS!!! VOCE VENCEU.");
-
     }
 }
