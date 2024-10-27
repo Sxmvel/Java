@@ -10,7 +10,7 @@ public class RachaCuca {
         Scanner t = new Scanner(System.in);
         int opcao = -1;
         do {
-            System.out.println("Ola jogador(a)! Seja bem-vindo(a) ao Racha-Cuca!\nMenu:\nSair(0).\nIniciar(1).\nTutorial(2).");
+            System.out.println("Ola jogador(a)! Seja bem-vindo(a) ao Racha-Cuca!\nMenu Inicial:\nSair(0).\nIniciar(1).\nTutorial(2).");
             try {
                 opcao = t.nextInt(); // capturarndo a entrada numérica do usuário
                 if (opcao > 2 || opcao < 0) {
@@ -92,7 +92,21 @@ public class RachaCuca {
             } while (nivel < 1 || nivel > 3);
         }
         if (inicio == 2) {
-            System.out.println("AQUI IREMOS ADICIONAR O TUTORIAL DO RACHA CUCA");
+            System.out.println("""
+                               Ola jogador(a)! Seja bem-vindo(a) ao tutorial do Racha-Cuca!
+                               Aqui iremos te ensinar a maneira de concluir nosso tabuleiro com exito! Primeiro vamos te informar de alguns adendos.
+                               O objetivo principal do jogo eh ordenar o tabuleiro da maneira como ele eh apresentado, Apos voce iniciar o Racha cuca.
+                               Para sair do jogo, basta clicar no numero 0, logo no menu inicial.
+                               *Sobre o nivel escolhido para sua partida:
+                               Temos 3 niveis, que para selecionar o nivel desejado voce apertara o numero que esta a frente do nivel.
+                               Exemplo:\n1- para nivel FACIL\n2- para nivel MEDIO\n3- para nivel DIFICIL.
+                               Obs: Se voce selecionar um numero diferente o programa ira informa que o nivel eh invalido!!!
+                               As diferencas dos niveis eh a quantidade de embaralhadas que o tabuleiro recebera.
+                               O nivel FACIL ira ser embaralhada 20 vezes\nO nivel MEDIO ira ser embaralhado 40 vezes\nO nivel DIFICIL sera embaralhado 80 vezes.
+                               Sobre os movimentos: Voce poderar mover somente pecas adjacente ao espaco vazio. Ou seja pecas que sejam "vizinhas" ao espaco vazio
+                               Sera contabilizado quantos movimentos voce realizou para ordenar o tabuleiro, voce sera informado de cada movimento realizado.
+                               Apos a conclusao da ordenacao do tabuleiro voce ganhara o jogo!
+                               Boa sorte e uma otima jogatina!!!! """);
             System.exit(0); // Comando para encerar o programa.
         }
 
@@ -117,7 +131,9 @@ public class RachaCuca {
         do {
             String movimento, guardar;//VALIDAR O MOVIMENTO E GUARDAR A STRING.
             boolean movimentoValido = false;
+
             //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][0]. DE INICIO PARA FILEIRA DE CIMA, 1 Loop de repeticao. LINHA SUPERIOR
+            System.out.println("");
             imprimirTabuleiro(tabuleiro);
             movimento = verificarEspacoVazio(tabuleiro);
 
@@ -133,7 +149,6 @@ public class RachaCuca {
                     tabuleiro[0][0] = guardar;
                     movimentoValido = true;
                 }
-
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [0][1]. 2 Loop de repeticao. LINHA SUPERIOR
             else if (tabuleiro[0][1].equals(" ")) {
                 if (movimento.equals(tabuleiro[0][0])) {
@@ -165,23 +180,23 @@ public class RachaCuca {
                     tabuleiro[0][2] = guardar;
                     movimentoValido = true;
 
-                } else if (tabuleiro[1][0].equals(" ")) {
-                    if (movimento.equals(tabuleiro[0][0])) {
-                        guardar = tabuleiro[0][0];
-                        tabuleiro[0][0] = tabuleiro[1][0];
-                        tabuleiro[1][0] = guardar;
-                        movimentoValido = true;
-                    } else if (movimento.equals(tabuleiro[1][1])) {
-                        guardar = tabuleiro[1][1];
-                        tabuleiro[1][1] = tabuleiro[1][0];
-                        tabuleiro[1][0] = guardar;
-                        movimentoValido = true;
-                    } else if (movimento.equals(tabuleiro[2][0])) {
-                        guardar = tabuleiro[2][0];
-                        tabuleiro[2][0] = tabuleiro[1][0];
-                        tabuleiro[1][0] = guardar;
-                        movimentoValido = true;
-                    }
+                }
+            } else if (tabuleiro[1][0].equals(" ")) {
+                if (movimento.equals(tabuleiro[0][0])) {
+                    guardar = tabuleiro[0][0];
+                    tabuleiro[0][0] = tabuleiro[1][0];
+                    tabuleiro[1][0] = guardar;
+                    movimentoValido = true;
+                } else if (movimento.equals(tabuleiro[1][1])) {
+                    guardar = tabuleiro[1][1];
+                    tabuleiro[1][1] = tabuleiro[1][0];
+                    tabuleiro[1][0] = guardar;
+                    movimentoValido = true;
+                } else if (movimento.equals(tabuleiro[2][0])) {
+                    guardar = tabuleiro[2][0];
+                    tabuleiro[2][0] = tabuleiro[1][0];
+                    tabuleiro[1][0] = guardar;
+                    movimentoValido = true;
                 }
             } //FAZENDO O MOVIMENTO DAS PECAS QUANDO O ESPACO VAGO ESTA EM [1][1]. 5 Loop de repeticao. LINHA CENTRAL
             else if (tabuleiro[1][1].equals(" ")) {
