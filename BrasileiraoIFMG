@@ -1,0 +1,114 @@
+package brasileiraoifmg;
+
+import java.util.Scanner;
+
+public class BrasileiraoIFMG {
+    
+    
+    public static void cadastraPartida(Equipe equipesCamp[]){
+        Scanner entrada = new Scanner(System.in);
+        
+        System.out.println("Selecione a equipe da casa e a equipe visitante: ");
+        int eqCasa, eqVisitante;
+        do{
+        for(int i = 0; i < equipesCamp.length; i++) {
+            if(equipesCamp[i] != null){
+            System.out.println((i+1) + " - :" + equipesCamp[i].getNome()); 
+            }          
+        }
+        eqCasa = entrada.nextInt();
+        eqVisitante = entrada.nextInt();
+        
+        }while(eqCasa == eqVisitante || eqCasa < 1 || eqVisitante < 1 || 
+                eqCasa >= equipesCamp.length || eqVisitante >= equipesCamp.length ||
+                equipesCamp[eqCasa-1] == null ||equipesCamp[eqVisitante-1] == null);
+                
+    }
+    
+    
+    
+    public static void main(String[] args) {
+
+        Equipe equipes[] = new Equipe[20];
+
+        equipes[0] = new Equipe("A");
+        equipes[1] = new Equipe("B");
+        equipes[2] = new Equipe("C");
+        equipes[3] = new Equipe("D");
+        
+        cadastraPartida(equipes);
+        
+        
+        
+        //Time A                                        //Time C 
+        equipes[0].disputa(2, 1, 0, 0, 4, 2, equipes[2]);
+        
+        
+        //Aqui vamos simular uma disputa.
+        //Casa x Visitante. 
+        //Gols casa x Gols Visitantes.
+        //Amarelo Casa x Amarelo Visitante.
+        //Vermelho Casa x Vermelho Visitante.
+        
+    }
+}
+
+
+
+-------------------
+*Classe*
+
+package brasileiraoifmg;
+
+public class Equipe {
+
+    private String nome;
+    private int pontos;
+    private int golsPros;
+    private int golsContra;
+    private int saldoGols;
+    private int qCartaoVermelhos;
+    private int qCartaoAmarelo;
+
+    public Equipe(String nome) {
+        this.nome = nome;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+    
+    
+    
+    public void disputa(int golsCasa, int golsVis, int qVerCasa, int qVerVisitante,
+            int qAmaCasa, int qAmaVisitante, Equipe visitante) {
+        if (golsCasa > golsVis) {
+            this.pontos += 3;
+        } else {
+            if (golsCasa < golsVis) {
+                visitante.pontos += 3;
+            } else {
+                this.pontos++;
+                visitante.pontos++;
+            }
+        }
+        // Gols casa
+        this.golsPros = golsCasa;
+        this.golsContra = golsVis;
+        this.saldoGols = this.golsPros - this.golsContra;
+        
+        //Gols visitante
+        visitante.golsPros = golsVis;
+        visitante.golsContra = golsCasa;
+        visitante.saldoGols = visitante.golsPros - visitante.golsContra;
+        
+        // Cartao amarelo 
+        this.qCartaoAmarelo += qAmaCasa;
+        visitante.qCartaoAmarelo += qAmaVisitante;
+        
+        //Cartao vermelho
+        this.qCartaoVermelhos += qAmaCasa;
+        visitante.qCartaoVermelhos += qAmaVisitante;
+
+    }
+}
