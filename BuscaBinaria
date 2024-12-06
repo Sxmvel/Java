@@ -1,0 +1,25 @@
+package pesquisabinaria;
+
+public class PesquisaBinaria {
+
+    public static int pesquisaBinaria(int x, int e, int n, int v[]) {
+
+        if (e >= n - 1) {
+            return n;
+        }
+
+        int m = (e + n) / 2;
+
+        if (v[m] < x) {
+            return pesquisaBinaria(x, m, n, v);
+        } else {
+            return pesquisaBinaria(x, e, m, v);
+        }
+
+    }
+
+    public static void main(String[] args) {
+        int v[] = {1, 2, 3, 4, 5};
+        System.out.println(pesquisaBinaria(4, -1, 5, v));
+    }
+}
