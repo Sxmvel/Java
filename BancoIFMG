@@ -1,1 +1,39 @@
+    public void cadastrarJogador() {
+        Scanner t = new Scanner(System.in);
+        System.out.println("Informe o nome do jogador: ");
+        String nomes = t.nextLine();
+        this.nome = nomes;
+        numJogador++;
+        novoCadastro();
+        if(numJogador > 6){
+            menuInicial();
+        }
+    }
 
+    public void novoCadastro() {
+        Scanner t = new Scanner(System.in);
+        System.out.println("Deseja cadastrar outro jogador(sim/nao)");
+        String novoJogador;
+        novoJogador = t.nextLine();
+        if (novoJogador.equals("sim")) {
+            cadastrarJogador();
+        }
+        if (novoJogador.equals("nao")) {
+            verificarQtdJogadores();
+        }
+
+    }
+
+    public void verificarQtdJogadores() {
+        if (numJogador > 2 && numJogador < 7) {
+            novoCadastro();
+        }
+        if (numJogador < 2) {
+            System.out.println("Quantidade de jogador invalida. Cadastre pelo menos 2 jogadores para iniciar");
+            cadastrarJogador();
+        }
+        if (numJogador > 6) {
+            System.out.println("Quantidade de jogador possui ja cadastrada! ");
+            menuInicial();
+        }
+    }
