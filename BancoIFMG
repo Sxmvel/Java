@@ -37,3 +37,35 @@
             menuInicial();
         }
     }
+
+
+
+    public void acaoPropriedade(Posicao jogadores){ // Posicao Proprietario 
+        
+          Scanner t = new Scanner(System.in);
+          String resposta;
+        
+          // Se a posição não POSSUIR dono.
+        if(posicaoDoTabuleiro[jogadores.getPosicaoJogadorTabuleiro()].isTemDono() == false){
+            System.out.println("Voce deseja adquirir a propriedade?? (sim/nao) ");
+            
+            resposta = t.nextLine();
+            
+            if(resposta.equals("sim")){
+                // Setar essa posição como uma de suas propriedades. E descontar o valor dela em seu saldo.)
+                //PróximaJogada()
+            }else{
+                if(!resposta.equals("sim")){
+                    //PróximaJogada().
+                }
+            }      
+        }
+        
+        //Se a posição POSSUIR DONO e o dono da propriedade foi o PRÓPRIO JOGADOR
+      
+        else if(posicaoDoTabuleiro[jogadores.getPosicaoJogadorTabuleiro()].isTemDono() == true  ) { // && posicaoDoTabuleiro[jogadores.getPosicaoJogadorTabuleiro()].getProprietario == 
+            
+        }   
+            
+        
+    }
