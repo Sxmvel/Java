@@ -69,3 +69,42 @@
             
         
     }
+
+
+    // VERIFICA A CLASSE DA POSICAO 
+    public void verificarTipoDaPosicaoTabuleiro(Posicao jogadoresCadastrados, Tabuleiro tabuleiro, int indice) {
+        if (tabuleiro.casasDoTabuleiro[jogadoresCadastrados.retornaPosicaoJogador(indice)] instanceof Lote) {
+            casoLote(jogadoresCadastrados, tabuleiro, indice);
+        }
+        if (tabuleiro.casasDoTabuleiro[jogadoresCadastrados.retornaPosicaoJogador(indice)] instanceof Companhia) {
+            casoCompanhia(jogadoresCadastrados, tabuleiro, indice);
+        }
+        if (tabuleiro.casasDoTabuleiro[jogadoresCadastrados.retornaPosicaoJogador(indice)] instanceof Sorte) {
+            casoSorteReves(jogadoresCadastrados, tabuleiro, indice);
+        }
+        if (tabuleiro.casasDoTabuleiro[jogadoresCadastrados.retornaPosicaoJogador(indice)] instanceof Fixo) {
+            casoFixo(jogadoresCadastrados, tabuleiro, indice);
+        }
+        
+    }
+
+    
+   
+    public void casoLote(Posicao jogadoresCadastrados, Tabuleiro tabuleiro, int indice) {
+        System.out.println("AQUI EH LOTE");
+        
+    }
+
+    public void casoCompanhia(Posicao jogadoresCadastrados, Tabuleiro tabuleiro, int indice) {
+        System.out.println("AQUI EH COMPANHIA ");
+    }
+
+    public void casoSorteReves(Posicao jogadoresCadastrados, Tabuleiro tabuleiro, int indice) {
+        System.out.println("AQUI EH SORTE");
+    }
+
+    public void casoFixo(Posicao jogadoresCadastrados, Tabuleiro tabuleiro, int indice) {
+        System.out.println("AQUI EH FIXO");
+    }
+
+}
