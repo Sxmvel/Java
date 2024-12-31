@@ -108,3 +108,36 @@
     }
 
 }
+
+
+
+                String nomeJogador = jogadoresCadastrados.retornNomeJogador(indice);
+                int saldoJogador = jogadoresCadastrados.retornaSaldo(indice);
+                int posicaoJogador = jogadoresCadastrados.retornaPosicaoJogador(indice);
+                String propriedades = jogadoresCadastrados.retornaPropriedade(indice).isEmpty()
+                    ? "Nenhuma propriedade adquirida."
+                    : jogadoresCadastrados.retornaPropriedade(indice).toString();
+                int maxContentLength = Math.max(
+             Math.max(("Jogador: " + nomeJogador).length(), 
+             ("Saldo: R$ " + saldoJogador).length()),
+              Math.max(("Posição Atual: " + posicaoJogador).length(), 
+             ("Propriedades: " + propriedades).length())
+             );
+                
+                
+                System.out.println("+-----------------------------------------------+");
+                System.out.println("|               Jogo do Banco IFMG              |");
+                System.out.println("+-----------------------------------------------+");
+                System.out.printf("| Jogador: %-37s|\n", nomeJogador);
+                System.out.printf("| Saldo: R$ %-36d|\n", saldoJogador);
+                System.out.printf("| Posicao Atual: %-31d|\n", posicaoJogador);
+                System.out.println("+-----------------------------------------------+");
+                System.out.printf("| Propriedades: %-32s|\n", propriedades);
+                System.out.println("+-----------------------------------------------+");
+                System.out.println();
+                System.out.println("""
+                                 |------------------------------------------------|
+                                 |       APERTE ENTER PARA JOGAR OS DADOS!!       |
+                                 |------------------------------------------------|""");
+                
+
