@@ -1,0 +1,18 @@
+    public static int verificarEntrada(){
+        Scanner teclado = new Scanner(System.in);
+        int opcao = -1;
+        do{
+        try {
+                opcao = teclado.nextInt(); // Tratamento de exceção para garantir que o usuario informe valores de ( 0 a )
+                if (opcao > 2 || opcao < 0) {
+                    System.out.println("Opcao invalida. Tente novamente!\n");
+                }
+            } catch (InputMismatchException e) {
+                // // Tratamento de exceção para garantir que o usuario nao informe entradas diferentes de números 
+                System.out.println("Entrada invalida! Digite um numero (0, 1 ou 2).\n");
+                teclado.next(); // Limpa a entrada inválida           
+            }
+         }while(opcao > 2 || opcao < 0);
+        
+        return opcao;
+    }
