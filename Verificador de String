@@ -1,0 +1,17 @@
+    try {
+            System.out.print(">>>>>INFORME O NUMERO DE JOGADORES (ENTRE 2 E 6): ");
+             numeroJogadores = teclado.nextInt();
+
+            if (numeroJogadores <= 6 && numeroJogadores >= 2) {
+                for (int i = 0; i <= numeroJogadores - 1; i++) {
+                    // Chama o método para criar novos jogadores e passar o índice para cadastrar na ordem correta
+                    cadastraJogador(i);
+                }
+            } else {
+                // Caso o número informado exceda os limites, essa mensagem será exibida
+                System.out.println("NUMERO INFORMADO ABAIXO OU ACIMA DO ESPERADO (INFORMAR DE 2 A 6 JOGADORES)");
+            }
+        } catch (InputMismatchException verificaEntrada) {
+            // Captura caso o usuário insira um valor que não seja um número inteiro
+            System.out.println("ERRO: Entrada invalida. Por favor, insira um numero inteiro entre 2 e 6.");
+        }
