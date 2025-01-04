@@ -141,3 +141,36 @@
                                  |------------------------------------------------|""");
                 
 
+    public void resetarPropriedades(Posicao jogadoresCadastrados, Tabuleiro tabuleiro, int indiceJogadorEliminado) {
+
+        //Passo 1 - descobrir jogador a ser eliminado e excluir seu array list de propriedades(limpou o array list do jogador)
+        jogadoresCadastrados.getJogadores().get(indiceJogadorEliminado).getPropriedades().clear();
+        //Passo 2 - descadastrar as propriedades do indice dele(definir as propriedades como null)
+        for (int posicaoVerificada = 0; posicaoVerificada < tabuleiro.casasDoTabuleiro.length; posicaoVerificada++) {
+            //aqui eu passo por todas as casas
+            if (tabuleiro.casasDoTabuleiro[posicaoVerificada].getIndiceDoDono() == indiceJogadorEliminado
+                    && tabuleiro.casasDoTabuleiro[posicaoVerificada] instanceof Companhia) {
+                //consegue descobrir se é dono ou não e se É uma companhia
+                tabuleiro.casasDoTabuleiro[posicaoVerificada].setPosicaoTemDono(false);
+                //definindo que ela não tem dono 
+                tabuleiro.casasDoTabuleiro[posicaoVerificada].setNomeDoDono(null);
+                //definiu nome igual a null
+
+            }
+
+            if (tabuleiro.casasDoTabuleiro[posicaoVerificada].getIndiceDoDono() == indiceJogadorEliminado
+                    && tabuleiro.casasDoTabuleiro[posicaoVerificada] instanceof Lote) {
+                //Verifico novamente se o indice do dono é o mesmo do jogador eliminado
+                Posicao posicaoAtual = tabuleiro.casasDoTabuleiro[posicaoVerificada];
+                Lote lote = (Lote) posicaoAtual; //Casting
+                
+                //Aqui eu reinicio o nivel de lote
+                lote.nivel = 0;
+                
+                //falamos que não tem dono
+                tabuleiro.casasDoTabuleiro[posicaoVerificada].setPosicaoTemDono(false);
+                //falamos que é nullo o nome do dono
+                tabuleiro.casasDoTabuleiro[posicaoVerificada].setNomeDoDono(null);
+            }
+
+        }
