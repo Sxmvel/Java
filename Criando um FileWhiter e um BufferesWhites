@@ -1,0 +1,22 @@
+public class LerArquivo4 {
+
+    public static void main(String[] args) throws IOException {
+       String[] lines = new String [] {"Ola","Tudo Bem", "Joia"};
+       
+       String path = "c:\\teste\\out.txt";
+       
+       try(BufferedWriter bw = new BufferedWriter(new FileWriter(path))){
+           for(String line : lines){
+               bw.write(line);
+               bw.newLine(); // Quebra de linha
+           }
+       }catch(IOException e){
+           e.printStackTrace();
+       }
+    }   
+
+    // O parametro true eh para reescrever, e nao destruir o arquivo.
+    /*
+    (BufferedWriter bw = new BufferedWriter(new FileWriter(path,true)))
+    */
+}
