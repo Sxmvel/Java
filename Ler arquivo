@@ -1,0 +1,30 @@
+package lerarquivo;
+
+import java.io.File;
+import java.io.IOException;
+import java.util.Scanner;
+
+public class LerArquivo {
+
+    public static void main(String[] args) {
+
+        File file = new File("c:\\teste\\in.txt");
+        //Intanciar o Scanner apartir do arquivo in       
+        Scanner t = null;
+        try {
+            t = new Scanner(file); // Instanciando um Scanner. Invez do System.in coloca o arquivo que eu quero ler
+            while (t.hasNextLine()) {
+            // Isso serve para verificar se existe outra linha no arquivo - se estiver ele vai imprimir a linha do arquivo
+                System.out.println(t.nextLine());
+            }
+        } catch (IOException e) { // tratar uma excessao do exception
+            System.out.println("Erro: " + e.getMessage());
+            // getMessage vai imprimir a mensagem do erro
+        } finally {
+            if (t != null) {
+                t.close();
+            }
+            // Fechamento de recurso. Mesmo que de certo ou errado.
+        }
+    }
+}
