@@ -1,0 +1,41 @@
+public class LerArquivo5 {
+
+    public static void main(String[] args) {
+       Scanner t = new Scanner (System.in);
+       
+       
+        System.out.println("Informe o caminho da pasta");
+        
+        String strPath = t.nextLine();
+        
+        File path = new File(strPath);
+        
+        // Listagem de pasta
+        
+        
+        // PARA LER PASTA E DIRETORIO 
+        File[] folders = path.listFiles(File::isDirectory);
+        //isDirectory - Lista o que eh diretorio e pasta
+        
+        System.out.println("FOLDERS: ");
+        for(File folder : folders){
+            System.out.println(folder); 
+        }
+        
+        
+        // PARA LER ARQUIVOS 
+        File [] files = path.listFiles(File::isFile);
+        System.out.println("FILES: ");
+        for(File file:files){
+            System.out.println(file);
+        }
+        
+        // Criar pastas 
+        
+        boolean sucess = new File(strPath + "\\NOVAPASTA").mkdir();
+        System.out.println("Diretorio criado com sucesso: " + sucess);
+        
+
+        t.close();      
+    }
+}
